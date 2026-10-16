@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const clearPreviewBtn = document.getElementById('clear-preview-btn');
 
   let currentFiles = [];
+  const servedDesignIds = [];
 
   // Auto resize scroll
   function scrollToBottom() {
@@ -207,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
           response = await fetch(`${API_BASE}/api/chat`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ prompt: text })
+            body: JSON.stringify({ prompt: text, exclude_ids: servedDesignIds })
           });
         }
 
@@ -218,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (result.type === 'info') {
             appendSystemMessage(result.message);
           } else if (result.type === 'design_response') {
+            if (result.design_id && !servedDesignIds.includes(result.design_id)) servedDesignIds.push(result.design_id);
             const content = `> 💡 **AI Match Note:** ${result.explanation}\n\n---\n\n${result.markdown}`;
             appendAiMessage(content, result.markdown, result.design_id);
           } else {
