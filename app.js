@@ -856,7 +856,8 @@ document.addEventListener('DOMContentLoaded', () => {
     libraryGrid.innerHTML = '<p style="color:var(--text-secondary);grid-column:1/-1;text-align:center;padding:40px;">Loading designs...</p>';
 
     try {
-      const res = await fetch(`${API_BASE}/api/designs`);
+      let res = await fetch(`${API_BASE}/api/index`);
+      if (!res.ok) res = await fetch(`${API_BASE}/api/designs`);
       if (!res.ok) throw new Error('Failed to load library designs');
       allLibraryItems = await res.json();
       renderLibraryCards(allLibraryItems);
