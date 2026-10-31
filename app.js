@@ -423,4 +423,22 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#039;');
   }
+  // Mobile virtual keyboard and viewport adjustments
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", () => {
+      if (document.activeElement === chatInput) {
+        setTimeout(() => {
+          chatHistory.scrollTop = chatHistory.scrollHeight;
+        }, 100);
+      }
+    });
+  }
+
+  if (chatInput) {
+    chatInput.addEventListener("focus", () => {
+      setTimeout(() => {
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+      }, 300);
+    });
+  }
 });

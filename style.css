@@ -22,13 +22,17 @@ body {
   background-color: var(--app-bg);
   display: flex;
   height: 100vh;
+  height: 100dvh;
+  min-height: -webkit-fill-available;
   overflow: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 /* App Container */
 .outer-wrapper {
   width: 100%;
   height: 100vh;
+  height: 100dvh;
 }
 
 .app-container {
@@ -1161,5 +1165,404 @@ body {
   transform: translateY(0);
 }
 
+/* ==========================================================================
+   Comprehensive Responsive System (Mobile, Tablet, Desktop)
+   ========================================================================== */
 
+/* --- Tablet / Medium Screens (<= 1024px) --- */
+@media (max-width: 1024px) {
+  .view-section {
+    padding: 0 28px;
+  }
 
+  .sidebar {
+    width: 190px;
+    padding: 20px 12px;
+  }
+
+  .chat-message {
+    max-width: 100%;
+  }
+
+  .input-container {
+    width: calc(100% - 56px);
+  }
+}
+
+/* --- Small Tablets & Large Phones (<= 768px) --- */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 12px 16px;
+  }
+
+  .personalize-label {
+    display: none;
+  }
+
+  .header-icons {
+    gap: 12px;
+  }
+
+  .main-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 8px 16px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+  }
+
+  .sidebar nav {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .nav-btn {
+    white-space: nowrap;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .view-section {
+    padding: 0 16px;
+  }
+
+  .chat-history {
+    padding: 20px 0 160px 0;
+    gap: 24px;
+  }
+
+  .chat-message {
+    gap: 12px;
+  }
+
+  .user-message .message-content {
+    max-width: 88%;
+  }
+
+  .input-container {
+    width: calc(100% - 32px);
+    bottom: 14px;
+  }
+
+  .library-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+
+  .modal-content {
+    width: 94%;
+    height: 88%;
+    border-radius: 20px;
+  }
+
+  .modal-body {
+    padding: 20px;
+  }
+
+  .extractor-controls {
+    padding: 14px;
+  }
+}
+
+/* --- Mobile Phones (<= 600px) --- */
+@media (max-width: 600px) {
+  .app-header {
+    padding: 10px 14px;
+  }
+
+  .header-left {
+    gap: 6px;
+  }
+
+  .chat-title {
+    font-size: 0.9rem;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Keep toggle switch and close button clean, hide secondary decorative icons */
+  .header-icons svg:not(:first-child) {
+    display: none;
+  }
+
+  .header-right {
+    gap: 10px;
+  }
+
+  .view-section {
+    padding: 0 12px;
+  }
+
+  .chat-history {
+    padding: 16px 0 150px 0;
+    gap: 18px;
+  }
+
+  .chat-message {
+    gap: 10px;
+  }
+
+  .avatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  .ai-avatar svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .user-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+
+  .message-content {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    max-width: calc(100% - 38px);
+  }
+
+  .user-message .message-content {
+    padding: 10px 14px;
+    max-width: 90%;
+    font-size: 0.9rem;
+  }
+
+  .message-content h1 { font-size: 1.25rem; margin-top: 18px; margin-bottom: 8px; }
+  .message-content h2 { font-size: 1.1rem; margin-top: 16px; margin-bottom: 8px; }
+  .message-content h3 { font-size: 1rem; margin-top: 14px; margin-bottom: 6px; }
+
+  .message-content pre {
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    margin: 12px 0;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .message-content table {
+    font-size: 0.82rem;
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .message-content th, .message-content td {
+    padding: 6px 8px;
+  }
+
+  /* Compact Input Bar for Small Screens */
+  .input-container {
+    width: calc(100% - 20px);
+    bottom: 10px;
+  }
+
+  .input-box {
+    padding: 4px 8px;
+    gap: 4px;
+  }
+
+  .chat-text-input {
+    padding: 8px 6px;
+    font-size: 16px; /* Prevents auto-zoom on iOS Safari */
+    min-width: 0;
+  }
+
+  .chat-text-input::placeholder {
+    font-size: 0.82rem;
+  }
+
+  .model-btn span {
+    display: none; /* Hide 'Design Pro' text on mobile so input box isn't cramped */
+  }
+
+  .model-btn {
+    padding: 6px 8px;
+  }
+
+  .tool-btn {
+    padding: 6px;
+  }
+
+  .tool-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .submit-arrow {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  /* Action Buttons Wrap */
+  .message-actions {
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 12px;
+  }
+
+  .msg-action-btn {
+    flex: 1 1 calc(50% - 4px);
+    justify-content: center;
+    padding: 7px 10px;
+    font-size: 0.8rem;
+  }
+
+  /* Suggestions */
+  .prompt-suggestions {
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .suggestion-chip {
+    padding: 6px 12px;
+    font-size: 0.78rem;
+  }
+
+  /* Modal on Mobile */
+  .modal-content {
+    width: 96%;
+    height: 92%;
+    border-radius: 16px;
+  }
+
+  .modal-header {
+    padding: 14px 16px;
+  }
+
+  .modal-header h2 {
+    font-size: 1.05rem;
+  }
+
+  .modal-body {
+    padding: 14px;
+    font-size: 0.85rem;
+  }
+
+  /* Extractor Controls on Mobile */
+  .url-input-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #start-scrape-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .extractor-options-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .options-left, .options-right {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .preset-pills {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .preset-pill {
+    flex: 1;
+    text-align: center;
+  }
+
+  .range-control-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .target-badge {
+    text-align: center;
+  }
+
+  .stager-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .stager-toolbar .toolbar-left,
+  .stager-toolbar .toolbar-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .proceed-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .stager-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .toast {
+    max-width: calc(100% - 24px);
+    right: 12px;
+    left: 12px;
+    bottom: 12px;
+    font-size: 0.85rem;
+  }
+}
+
+/* --- Ultra-Small Screens (<= 380px) --- */
+@media (max-width: 380px) {
+  .chat-title {
+    max-width: 110px;
+  }
+
+  .msg-action-btn {
+    flex: 1 1 100%;
+  }
+
+  .stager-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Landscape Mode for Mobile Phones (max-height <= 550px) --- */
+@media (max-height: 550px) {
+  .app-header {
+    padding: 8px 16px;
+  }
+
+  .chat-history {
+    padding: 10px 0 110px 0;
+    gap: 12px;
+  }
+
+  .input-container {
+    bottom: 6px;
+  }
+
+  .modal-content {
+    height: 96%;
+  }
+}
